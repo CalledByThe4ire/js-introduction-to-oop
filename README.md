@@ -1,23 +1,13 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+### users.js
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Реализуйте и экспортируйте функцию `getMutualFriends`, которая принимает на вход двух пользователей и возвращает массив состоящий из общих друзей.
 
-# nodejs-package
+Интерфейс абстракции User:
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+-   `user.id` -- возвращает идентификатор пользователя, по которому можно его отличить от остальных.
+-   `user.getFriends()` -- возвращает список друзей.
 
-## Setup
-
-```sh
-$ make install
 ```
-
-## Run tests
-
-```sh
-$ make test
+// Подробнее смотрите в тестах
+const mutualFriends = getMutualFriends(user1, user2);
 ```
