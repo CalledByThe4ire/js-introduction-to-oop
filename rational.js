@@ -11,13 +11,12 @@ const make = (numer, denom) => ({
     return this.denom;
   },
   toString() {
-    return `${numer}/${denom}`;
+    return `${this.getNumer()}/${this.getDenom()}`;
   },
-  add(rat) {
-    return make(
-      this.numer * rat.denom + this.denom * rat.numer,
-      this.denom * rat.denom,
-    );
+  add(rational) {
+    const newNumer = this.getNumer() * rational.getDenom() + rational.getNumer() * this.getDenom();
+    const newDenom = this.getDenom() * rational.getDenom();
+    return make(newNumer, newDenom);
   },
 });
 
