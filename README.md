@@ -1,23 +1,43 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+Node.js
+-------
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Двоичное дерево поиска состоит из узлов, каждый из которых содержит значение ключа и два поддерева (левое и правое), которые в свою очередь также являются двоичными деревьями. Правильное дерево не содержит повторяющихся ключей, и для каждого узла гарантируется, что в левом поддереве все значения меньше текущего, а в правом --- больше.
 
-# nodejs-package
+![Двоичное дерево поиска](https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImFmNTEyMTI4NzMzNjNhMTlkZWM2ZjVhYjhhYjJmNDk0LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=ee8aecfce8a274d1e11176e5cc37bccc6c60a1974f4b408a27a346864e186414)
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+Реализуйте и экспортируйте по умолчанию класс, который реализует представление узла. Конструктор класса принимает на вход значение ключа (число), и двух детей, которые в свою очередь также являются узлами. Дерево может быть создано пустым.
 
-## Setup
+Класс должен содержать методы:
 
-```sh
-$ make install
+-   Геттер `getKey()` --- возвращает ключ. Если дерево пустое, возвращает `null`.
+-   Геттеры `getLeft()`, `getRight()` --- возвращают соответственно левого и правого ребёнка. Если ребёнок в узле отсутствует, геттер возвращает `null`.
+-   `search(key)` --- выполняет поиск узла в правильном двоичном дереве по ключу и возвращает узел. Если узел не найден, возвращается `null`.
+
+### Примеры
+
+```
+const tree = new Node(9,
+  new Node(4,
+    new Node(3),
+    new Node(6,
+      new Node(5),
+      new Node(7))),
+  new Node(17,
+    null,
+    new Node(22,
+      new Node(20)
+      null)));
+
+const node = tree.search(6);
+node.getKey(); // 6
+node.getLeft().getKey(); // 5
+node.getRight().getKey(); // 7
+
+tree.search(35); // null
+tree.search(3).getLeft(); // null
+
 ```
 
-## Run tests
+### Подсказки
 
-```sh
-$ make test
-```
+-   [Двоичное дерево поиска](https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0)
