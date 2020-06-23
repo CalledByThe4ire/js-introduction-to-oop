@@ -1,23 +1,48 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+В данном испытании мы будем использовать двоичное дерево, и выполнять агрегацию данных.
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Node.js
+-------
 
-# nodejs-package
+Реализуйте следующие методы в классе:
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+-   `getCount()` --- возвращает количество узлов в дереве.
+-   `getSum()` --- возвращает сумму всех ключей дерева.
+-   `toArray()` --- возвращает одномерный массив содержащий все ключи.
+-   `toString()` --- возвращает строковое представление дерева.
+-   `every(fn)` --- проверяет, удовлетворяют ли все ключи дерева условию, заданному в передаваемой функции.
+-   `some(fn)` - проверяет, удовлетворяет ли какой-либо ключ дерева условию, заданному в передаваемой функции.
 
-## Setup
+При обходе дерева нужно использовать порядок слева-направо. То есть вначале обрабатываем ключ узла, затем ключ левого ребёнка, после чего ключ правого ребёнка.
 
-```sh
-$ make install
+### Примеры
+
+```
+const tree = new Node(9,
+    new Node(4,
+      new Node(8),
+      new Node(6,
+        new Node(3),
+        new Node(7))),
+    new Node(17,
+      null,
+      new Node(22,
+        null,
+        new Node(20))));
+
+tree.getCount() // 9
+tree.getSum(); // 96
+tree.toArray(); // [9, 4, 8, 6, 3, 7, 17, 22, 20]
+tree.toString(); // '(9, 4, 8, 6, 3, 7, 17, 22, 20)'
+
+tree.every((key) => key <= 22); // true
+tree.every((key) => key < 22); // false
+tree.some((key) => key < 4); // true
+tree.some((key) => key > 22); // false
+
 ```
 
-## Run tests
+### Подсказки
 
-```sh
-$ make test
-```
+-   [Двоичное дерево](https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE)
+-   Для реализации каждого из методов потребуется выполнить обход всех узлов дерева.
+-   Вспомните принцип работы метода [reduce](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) для массивов.
