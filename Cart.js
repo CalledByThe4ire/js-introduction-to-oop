@@ -5,26 +5,23 @@ import _ from 'lodash';
 // BEGIN (write your solution here)
 export default class Cart {
   constructor() {
-    this.cart = [];
+    this.items = [];
   }
 
   addItem(good, count) {
-    this.cart.push({ good, count });
+    this.items.push({ good, count });
   }
 
   getItems() {
-    return this.cart;
+    return this.items;
   }
 
   getCount() {
-    return this.cart.reduce((acc, { count }) => acc + count, 0);
+    return _.sumBy(this.items, (item) => item.count);
   }
 
   getCost() {
-    return this.cart.reduce(
-      (acc, { good: { price }, count }) => acc + price * count,
-      0,
-    );
+    return _.sumBy(this.items, (item) => item.good.price * item.count);
   }
 }
 // END
