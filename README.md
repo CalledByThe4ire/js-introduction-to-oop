@@ -1,23 +1,23 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+*Это задание хоть и небольшое, но хитрое, его иногда задают на собеседованиях. Если не получится его решить сразу -- не сдавайтесь. Оно стоит того чтобы разобраться самостоятельно (задавайте вопросы!)*
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+magic.js
+--------
 
-# nodejs-package
+Реализуйте и экспортируйте по умолчанию функцию, которая работает следующим образом:
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+-   Принимает на вход любое число аргументов и возвращает функцию, которая, в свою очередь, принимает на вход любое количество аргументов и так до бесконечности (привет, рекурсия ;)).
+-   Результат вызова этой функции при проверке на равенство должен быть равен сумме всех аргументов всех подфункций.
 
-## Setup
+```
+magic() == 0; // true
+magic(5, 2, -8) == -1; // true
+magic(1, 2)(3, 4, 5)(6)(7, 10) == 38; // true
+magic(4, 8, 1, -1, -8)(3)(-3)(7, 2) == 13; // true
 
-```sh
-$ make install
 ```
 
-## Run tests
+Подсказки
+---------
 
-```sh
-$ make test
-```
+-   Функции это объекты.
+-   Для решения задачи вам понадобится создать ещё одну функцию (внутреннюю).
