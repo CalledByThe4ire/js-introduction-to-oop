@@ -1,23 +1,19 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+Cart.js
+-------
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Реализуйте и экспортируйте по умолчанию класс *Cart*, представляющего из себя покупательскую корзину. Интерфейс:
 
-# nodejs-package
+1.  `addItem(good, count)` -- добавляет в корзину товары и их количество. Товар это объект у которого два свойства: `name` -- имя и `price` -- стоимость.
+2.  `getItems` -- возвращает товары в формате `[{ good, count }, { good, count }, ...]`
+3.  `getCost` -- возвращает стоимость корзины. Стоимость корзины высчитывается как сумма всех добавленных товаров с учетом их количества.
+4.  `getCount` -- возвращает количество товаров в корзине
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+### Пример
 
-## Setup
-
-```sh
-$ make install
 ```
-
-## Run tests
-
-```sh
-$ make test
+const cart = new Cart();
+cart.addItem({ name: 'car', price: 3 }, 5);
+cart.addItem({ name: 'house', price: 10 }, 2);
+cart.getItems().length; // 2
+cart.getCost(); // 35
 ```
