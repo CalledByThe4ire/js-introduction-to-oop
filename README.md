@@ -1,23 +1,39 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+Двоичное дерево --- иерархическая структура данных, в которой каждый узел имеет не более двух потомков (детей). Как правило, первый называется родительским узлом, а дети называются левым и правым наследниками.
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+В данном испытании мы будем использовать подвид двоичного дерева --- двоичное дерево поиска. Правильное дерево не содержит повторяющихся ключей, и для каждого узла гарантируется, что в левом поддереве все значения меньше текущего, а в правом --- больше.
 
-# nodejs-package
+![Двоичное дерево поиска](https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImViOWRiZmUyNDkwNzY1NDBiM2I0NWQ5ODU0YTA2MDljLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=0fda7e8bdc2877d1f9b27cf02a6d371e22e0bf6ec57e132149db78804222f473)
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+Node.js
+-------
 
-## Setup
+Реализуйте и экспортируйте по умолчанию класс, который реализует представление узла.
 
-```sh
-$ make install
+Класс должен содержать:
+
+-   Геттер `getKey()` --- возвращает ключ.
+-   Геттеры `getLeft()`, `getRight()` --- возвращают соответственно левого и правого ребёнка. Если ребёнок в узле отсутствует, геттер возвращает `null`.
+-   Метод `insert(key)` --- выполняет добавление узла, формируя правильное двоичное дерево.
+
+### Примеры
+
+```
+const tree = new Node();
+tree.insert(9);
+tree.insert(17);
+tree.insert(4);
+tree.insert(3);
+tree.insert(6);
+
+tree.getKey(); // 9
+tree.getLeft().getKey(); // 4
+tree.getRight().getKey(); // 17
+tree.getLeft().getLeft().getKey(); // 3
+tree.getLeft().getRight().getKey(); // 6
+
 ```
 
-## Run tests
+### Подсказки
 
-```sh
-$ make test
-```
+-   [Двоичное дерево](https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE)
+-   [Двоичное дерево поиска](https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0)
