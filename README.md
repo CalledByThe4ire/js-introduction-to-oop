@@ -1,23 +1,33 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+Особенность структуры двоичного дерева даёт хороший прирост к эффективности при поиске нужного значения. Для этого нужно, чтобы двоичное дерево было сбалансированным. То есть необходимо построить дерево так, чтобы общее количество узлов в левом и правом поддеревьях было примерно одинаковым для любого узла дерева.
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Node.js
+-------
 
-# nodejs-package
+Реализуйте метод `isBalanced()`, который проверяет дерево на сбалансированность. Он возвращает `true`, если количество узлов в левом и правом поддеревьях каждого узла отличается не более, чем на 2. В ином случае метод должен вернуть `false`.
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+*Сбалансированное дерево*
 
-## Setup
+![Сбалансированное двоичное дерево поиска](https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImIxZDkyY2Y3ZDA2NmE0Y2M1MGM2YmQ0ODdjM2RmOGQ1LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=8d0110eaa19bd8725e8938db6efcf9a827f5958b318fafd580674c1f0fff5f7f)
 
-```sh
-$ make install
+*Несбалансированное дерево*
+
+![Несбалансированное двоичное дерево поиска](https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjAzZGQ5NTFhOTVjMjY3YWUwNTE5MWUzNTBhNDg5ODBiLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=e0f473701d194e706d7dd7c18cf02cbea012583b6fa5ea7ac85faf249104bfee)
+
+В узле `5` количество узлов в левом поддереве равно 4, а в правом --- 1. Разница составляет 3. Это больше, чем максимально допустимая разница по условию задачи (2).
+
+### Примеры
+
 ```
+const tree1 = new Node(4,
+  new Node(3,
+    new Node(2)));
 
-## Run tests
+tree1.isBalanced(); // true
 
-```sh
-$ make test
+const tree2 = new Node(4,
+  new Node(3,
+    new Node(2,
+      new Node(1))));
+
+tree2.isBalanced(); // false
 ```
