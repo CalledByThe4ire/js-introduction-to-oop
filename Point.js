@@ -1,9 +1,17 @@
 // @ts-check
 // BEGIN (write your solution here)
-export default class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
+function getX() {
+  return this.x;
+}
+
+function getY() {
+  return this.y;
+}
+
+export default function Point(x, y) {
+  this.x = x;
+  this.y = y;
+  this.getX = getX;
+  this.getY = getY;
 }
 // END

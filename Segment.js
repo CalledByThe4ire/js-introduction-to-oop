@@ -1,20 +1,18 @@
 // @ts-check
 
-const getBeginPoint = function() {
+// BEGIN (write your solution here)
+function getBeginPoint() {
   return this.beginPoint;
 }
 
-const getEndPoint = function() {
+function getEndPoint() {
   return this.endPoint;
 }
 
-// BEGIN (write your solution here)
-export default class Segment {
-  constructor(beginPoint, endPoint) {
-    this.beginPoint = beginPoint;
-    this.endPoint = endPoint;
-  }
-  getBeginPoint = getBeginPoint;
-  getEndPoint = getEndPoint;
+export default function Segment(beginPoint, endPoint) {
+  this.beginPoint = beginPoint;
+  this.endPoint = endPoint;
+  this.getBeginPoint = getBeginPoint;
+  this.getEndPoint = getEndPoint;
 }
 // END

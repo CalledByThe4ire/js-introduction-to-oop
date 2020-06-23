@@ -5,9 +5,11 @@ import Segment from './Segment.js';
 
 // BEGIN (write your solution here)
 export default (segment) => {
-  const beginPoint = segment.beginPoint;
-  const endPoint = segment.endPoint;
+  const beginPoint = segment.getBeginPoint();
+  const endPoint = segment.getEndPoint();
+  const newEndPoint = new Point(beginPoint.getX(), beginPoint.getY());
+  const newBeginPoint = new Point(endPoint.getX(), endPoint.getY());
 
-  return new Segment(new Point(endPoint.x, endPoint.y), new Point(beginPoint.x, beginPoint.y));
+  return new Segment(newBeginPoint, newEndPoint);
 };
 // END
