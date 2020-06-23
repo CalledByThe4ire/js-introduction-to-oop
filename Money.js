@@ -1,57 +1,44 @@
-/* eslint-disable no-use-before-define */
 // @ts-check
 // BEGIN (write your solution here)
-function getValue() {
+const rates = {
+  usd: {
+    eur: 0.7,
+  },
+  eur: {
+    usd: 1.2,
+  },
+};
+
+export default function Money(value, currency = 'usd') {
+  this.value = value;
+  this.currency = currency;
+}
+
+Money.prototype.format = function format() {
+  // bad design (pass undefined the function), but it is js
+  return this.getValue().toLocaleString(undefined, { style: 'currency', currency: this.getCurrency() });
+};
+
+Money.prototype.getValue = function getValue() {
   return this.value;
-}
+};
 
-function getCurrency() {
+Money.prototype.getCurrency = function getCurrency() {
   return this.currency;
-}
+};
 
-function exchangeTo(currency) {
-  const currentCurrency = this.getCurrency();
-
-  if (currency === currentCurrency) {
-    return new Money(this.getValue());
+Money.prototype.exchangeTo = function exchangeTo(newCurrency) {
+  const currency = this.getCurrency();
+  if (currency === newCurrency) {
+    return new Money(this.getValue(), currency);
   }
+  const newValue = this.getValue() * rates[currency][newCurrency];
+  return new Money(newValue, newCurrency);
+};
 
-  switch (currency) {
-    case 'usd':
-      return new Money(this.getValue() * 1.2);
-    case 'eur':
-      return new Money(this.getValue() * 0.7);
-    default:
-      throw new Error(`unknown currency: ${currency}`);
-  }
-}
-
-function add(money) {
-  return new Money(
-    this.getValue() + money.exchangeTo(this.getCurrency()).getValue(),
-    this.getCurrency(),
-  );
-}
-
-function format() {
-  return `${
-    this.getCurrency() === 'usd' ? '$' : '€'
-  }${this.getValue().toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
-}
-
-export default class Money {
-  constructor(value, currency = 'usd') {
-    this.value = value;
-    this.currency = currency;
-  }
-}
-
-Money.prototype.getValue = getValue;
-Money.prototype.getCurrency = getCurrency;
-Money.prototype.exchangeTo = exchangeTo;
-Money.prototype.add = add;
-Money.prototype.format = format;
+Money.prototype.add = function add(money) {
+  const convertedMoney = money.exchangeTo(this.getCurrency());
+  const additionalValue = convertedMoney.getValue();
+  return new Money(this.getValue() + additionalValue, this.getCurrency());
+};
 // END
