@@ -1,23 +1,37 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+Point.js
+--------
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Реализуйте и экспортируйте по умолчанию функцию-конструктор Point с двумя свойствами, представляющими координаты на плоскости `x` и `y`.
 
-# nodejs-package
+Segment.js
+----------
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+Реализуйте и экспортируйте по умолчанию функцию-конструктор `Segment` с двумя свойствами `beginPoint` и `endPoint` и геттеры для извлечения этих свойств: `getBeginPoint` и `getEndPoint`.
 
-## Setup
+solution.js
+-----------
 
-```sh
-$ make install
+Реализуйте функцию `reverse`, которая принимает на вход отрезок и возвращает новый отрезок с точками, добавленными в обратном порядке (begin меняется местами с end).
+
+Точки в результирующем отрезке должны быть копиями (по значению) соответствующих точек исходного отрезка. То есть они не должны быть ссылкой на один и тот же объект, так как это разные объекты (пускай и с одинаковыми координатами).
+
+### Примеры
+
+```
+const beginPoint = new Point(1, 10);
+const endPoint = new Point(11, -3);
+
+const segment = new Segment(beginPoint, endPoint);
+const reversedSegment = reverse(segment);
+
+reversedSegment.getBeginPoint(); // (11, -3)
+reversedSegment.getEndPoint(); // (1, 10)
+
+beginPoint === reversedSegment.getEndPoint() // false
+endPoint === reversedSegment.getBeginPoint() // false
+
 ```
 
-## Run tests
+### Подсказки
 
-```sh
-$ make test
-```
+-   Есть разные способы организовать работу абстракции Point. Выберите тот, который считаете нужным, на основе пройденного материала.
